@@ -1,7 +1,7 @@
 
 #include "stdint.h"
-											 //!!!!!!!!
-#include "C:/Keil/TExaSware/tm4c123gh6pm.h"  //dawr 3ala el header file dh 3andak w ghair el path!!!!
+						 //!!!!!!!!
+#include "C:/Keil/TExaSware/tm4c123gh6pm.h"  //change file path!!!!
 void SystemInit(){}
 void numbreak(int c);
 void disp();
