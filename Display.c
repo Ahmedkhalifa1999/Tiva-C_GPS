@@ -33,7 +33,7 @@ void sevseg(int a[]) {
 	}
 	
 //un comment the following 2 lines
-	//portL-digwrite &= ~(0xfff << O);--- //(1111 1111 1111) base2 //reset all port-pins to zero, O is the starting pin in the port (offset)
-	//f  |= (pins<<O);
+	//portL-digwrite &= ~(0xfff << O);//(1111 1111 1111)base2 //reset all port-pins to zero, O is the starting pin in the port (offset)
+	// portL-digwrite  |= (pins<<O);
 	
 	}
