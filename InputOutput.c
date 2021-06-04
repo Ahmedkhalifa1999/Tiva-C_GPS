@@ -1,7 +1,5 @@
-#include "C:/Keil/ARM/BIN/tm4c123gh6pm.h"
+#include "tm4c123gh6pm.h"
 #include "stdint.h"
-
-void SystemInit(){}
 
 #define INT_GPIOA        // GPIO Port A
 #define INT_GPIOD        // GPIO Port D
@@ -32,10 +30,6 @@ void SystemInit(){}
 #define GPIO_PORTF_AFSEL_R      (*((volatile unsigned long *)0x40025420))
 #define GPIO_PORTF_PCTL_R       (*((volatile unsigned long *)0x4002552C))
 #define GPIO_PORTF_PUR_R        (*((volatile unsigned long *)0x40025510))
-
-
-int main(){
-}
 
 void init(void)
 {
