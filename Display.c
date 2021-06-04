@@ -1,16 +1,10 @@
-
 #include "stdint.h"
-						//!!!!!!!!
-#include "C:/Keil/TExaSware/tm4c123gh6pm.h"  //change file path!!!!
-void SystemInit(){}
+#include "tm4c123gh6pm.h"
+
 void numbreak(int c);
 void disp();
 void sevseg(int a[]); 
 
-int main() {
-	numbreak(123);
-
-}
 void numbreak(int c) {
 	int  nu[3],n;
 	nu[2]= c / 100;
