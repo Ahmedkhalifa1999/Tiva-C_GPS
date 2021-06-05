@@ -1,43 +1,22 @@
 #include "stdint.h"
 #include "tm4c123gh6pm.h"
 
-void numbreak(int c);
-void disp();
-void sevseg(int a[]); 
+//int digits[3];
 
-void numbreak(int c) {
-	int  nu[3],n;
-	nu[2]= c / 100;
-	nu[1] = (c - nu[2]*100) / 10;
-	nu[0] = (c - nu[2]*100 - nu[1]*10);
 
-	 
-	sevseg(nu);
+//void numbreak(int c) {
+//	digits[2]= c / 100;
+//	digits[1] = (c - digits[2]*100) / 10;
+//	digits[0] = (c - digits[2]*100 - digits[1]*10);
+//	
+//}
+void sevseg(int a) {
+	int digits[3];
+	digits[2]= a / 100;
+	digits[1] = (a - digits[2]*100) / 10;
+	digits[0] = (a - digits[2]*100 - digits[1]*10);
 	
+	GPIO_PORTA_DATA_R |= (0x3C&(digits[0] << 2));
+	GPIO_PORTB_DATA_R |= (0xF0&(digits[1] << 4));
+	GPIO_PORTE_DATA_R |= (0x3C&(digits[2] << 2));
 }
-void sevseg(int a[]) {
-
-	//int o1 = ;//the first pin you start from in the port (offset1) least signficant digit
-	//int o2= ; //offset 2
-	//int o3= ;  //offset 3
-	
-	/*
-	int pins =0;
-	int n = 0; 
-	for (n = 0; n < 3; n++) {               
-		
-		a[n] <<= 4*n;
-		pins |= a[n];			
-		
-	}
-	deleted*/
-	
-//un comment the following 2 lines after edting 
-	//portL-digwrite &= ~(0xfff << o1);//(1111 1111 1111)base2 //reset all port-pins to zero, O is the starting pin in the port (offset)
-	//portL-digwrite &= ~(0xfff << o2);
-	//portL-digwrite &= ~(0xfff << o3);
-	// portL-digwrite  |= (a[0]<<o1);  // least signficant digit
-	// portL-digwrite  |= (a[1]<<o2);
-	// portL-digwrite  |= (a[2]<<o3);
-	
-	}
