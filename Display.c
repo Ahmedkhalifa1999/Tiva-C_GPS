@@ -16,7 +16,7 @@ void sevseg(int a) {
 	digits[1] = (a - digits[2]*100) / 10;
 	digits[0] = (a - digits[2]*100 - digits[1]*10);
 	
-	GPIO_PORTA_DATA_R |= (0x3C&(digits[0] << 2));
-	GPIO_PORTB_DATA_R |= (0xF0&(digits[1] << 4));
-	GPIO_PORTE_DATA_R |= (0x3C&(digits[2] << 2));
+	GPIO_PORTA_DATA_R = (GPIO_PORTA_DATA_R & 0xC3) | (0x3C&(digits[0] << 2));
+	GPIO_PORTB_DATA_R = (GPIO_PORTB_DATA_R & 0x0F) | (0xF0&(digits[1] << 4));
+	GPIO_PORTE_DATA_R = (GPIO_PORTE_DATA_R & 0xC3) | (0x3C&(digits[2] << 2));
 }
