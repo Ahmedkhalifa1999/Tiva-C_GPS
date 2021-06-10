@@ -1,0 +1,109 @@
+#define F_CPU 16000000UL
+
+#include "stdint.h"
+#include "C:/Keil/TExaSware/tm4c123gh6pm.h"
+#include <avr/.h>
+#include <avr/delay.h>
+
+#define LCD_DATA PD0
+#define LCD_DATA PD1
+#define LCD_DATA PD2
+#define LCD_DATA PD3
+#define LCD_DATA PC4
+#define LCD_DATA PC5
+#define LCD_DATA PC6
+#define LCD_DATA PC7
+#define en PA6   //enble signal portA6
+#define rw PA7   //read/write signal port A7
+#define rs PF2   // register select port F2
+
+
+void init_LCD();
+void LCD_command (unsigned char command);
+void LCD_write (unsigned char data);
+
+int main()
+{ 
+	init_LCD();
+	_delay_ms(100);
+	
+	LCD_command (0x0C);//Display on , currsor off
+	_delay_ms (100);
+	
+	
+	while(1)
+	{
+		
+		for (uint8_t i=0; i<5; i++)
+		{
+		LCD_write( '          ' );
+		_delay_ms(100);
+		}
+		LCD_command (0xC0);  //move cursor to next line start
+		_delay_ms(100);
+		LCD_command (0x0C);  //display on, cursor off
+		_delay_ms(100);
+	
+		for (uint8_t i=0; i<5; i++)
+		{
+		LCD_write( '          ' );
+		_delay_ms(100);
+		}
+		
+		
+	}
+		
+	}
+
+ 
+void init_LCD(void)
+{
+	LCD_command (0x38); //Send 8-bit data
+	_delay_ms(1);
+	LCD_command (0x01);		//clear display screen
+	_delay_ms(1);
+	LCD_command (0x02); //return home
+	_delay_ms(1);
+	LCD_command (0x30);  //Wakeup
+	_delay_ms(1);	
+	LCD_command (0x06); //increment cursor
+
+	LCD_command (0x80); // go to most left posision on 1st line
+	_delay_ms(1)	;
+	LCD_command (0x0F); //Display on
+
+}
+
+//send command on LCD 
+void LCD_command(unsigned char cmd)
+{
+	LCD_DATA= command;
+	PORTF &=~ (1<<rs);  //rs sets 0
+	PORTA &=~ (1<<rw);  //rw sets 0
+	PORTA |= (1<<en);   // set enable high
+	_delay_ms (2)
+	
+	PORTA &= ~(1<<en);  //enable from high to low
+
+}
+
+
+//write data on LCD
+void LCD_write (unsigned char data)
+{
+LCD_DATA= data;
+	PORTF |= (1<<rs);  //rs sets 1
+	PORTA &=~ (1<<rw);  //rw sets 0
+	PORTA |= (1<<en);   // set enable high
+	_delay_ms (2)
+	
+	PORTA &= ~(1<<en);  //enable from high to low
+
+}
+
+
+
+
+
+
+  
