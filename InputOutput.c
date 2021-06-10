@@ -48,8 +48,8 @@ int main(){
 void init(void)
 
 {
-SYSCTL_RCGCGPIO_R|= 0x33;
-while ((SYSCTL_PRGPIO_R&0x33) == 0){};
+SYSCTL_RCGCGPIO_R|= 0x3F;
+while ((SYSCTL_PRGPIO_R&0x3F) == 0){};
 	
 GPIO_PORTA_DIR_R |= 0XFC;
 GPIO_PORTA_DEN_R |= 0xFC;
@@ -91,4 +91,11 @@ GPIO_PORTF_DEN_R |= 0x0E;
 GPIO_PORTF_AMSEL_R &= ~0x0E;
 GPIO_PORTF_AFSEL_R &=~0x0E;
 GPIO_PORTF_PCTL_R &= ~0x0000FFF0;
-GPIO_PORTF_DATA_R &= ~0x0E;
+GPIO_PORTF_DATA_R &= ~0x0E;	
+GPIO_PORTF_PUR_R |= 0x10;	
+
+	
+}
+	
+
+	
