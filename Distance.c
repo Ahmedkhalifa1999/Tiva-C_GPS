@@ -13,7 +13,7 @@ double distance(double lat1, double lat2, double lon1, double lon2)
 }
 //int main() 
 //{
-//	double lat1 = 29.99862;
+//	double lat1 = 29.862;
 //	double lat2 = 29.99755;
 //	double lon1 = 31.17397;
 //	double lon2 = 31.17319;
