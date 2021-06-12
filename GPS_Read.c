@@ -44,27 +44,18 @@ int ReadGPS(double pos[], int time[]) {
         longitude[i] = message[i+31];
     }
     
-
-	d=100;
-	
+    d=100;
 	
 	for ( i = 0; i<10; i++)
 	{
 	lng2[i] = (longitude[i] -'0') ;
 
-		if (i >= 3) {
-			lng2[i] = (lng2[i]*100) / (60);
-
-
-		}
-
-		longi += lng2[i] * d;
-
-		d /= 10;
-
+	if (i >= 3) {
+	lng2[i] = (lng2[i]*100) / (60);
+}
+	longi += lng2[i] * d;
+	d /= 10;
 	}
-	
-	
 	d = 10;
 	for ( i = 0; i < 9; i++)
 	{
@@ -81,6 +72,20 @@ int ReadGPS(double pos[], int time[]) {
 
 }
 
+	int time_int[3] = {0,0,0};
+	int n ;
+	int k; 
+	int v;
+	for ( n = 0; n < 6; n++)
+	{
+		k = n / 2;
+		v = 0;
+		v = time_char[n] -'0' ;
+			if (n % 2 == 0) {
+				v *= 10;
+			}
+		time_int[k] += v;
+	}
 
 
 
