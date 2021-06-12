@@ -2,105 +2,118 @@
 
 #include "stdint.h"
 #include "C:/Keil/TExaSware/tm4c123gh6pm.h"
-#include <avr/.h>
-#include <avr/delay.h>
 
-#define LCD_DATA PD0
-#define LCD_DATA PD1
-#define LCD_DATA PD2
-#define LCD_DATA PD3
-#define LCD_DATA PC4
-#define LCD_DATA PC5
-#define LCD_DATA PC6
-#define LCD_DATA PC7
-#define en PA6   //enble signal portA6
-#define rw PA7   //read/write signal port A7
-#define rs PF2   // register select port F2
+
 
 
 void init_LCD();
 void LCD_command (unsigned char command);
 void LCD_write (unsigned char data);
+void delay_milli (int n);
+void delay_micro (int n);
+
+
 
 int main()
 { 
 	init_LCD();
-	_delay_ms(100);
-	
-	LCD_command (0x0C);//Display on , currsor off
-	_delay_ms (100);
-	
-	
+	delay_milli(100);
 	while(1)
 	{
+	
+	LCD_command (0x0C);//Display on , currsor off
+	LCD_command (0x01);		//clear display screen
+	LCD_command (0x80); // go to most left posision on 1st line	
+	delay_milli (500);
+	
+	
+	
+		//writing
 		
 		for (uint8_t i=0; i<5; i++)
 		{
-		LCD_write( '          ' );
-		_delay_ms(100);
+			// char test [a,b,c] ;
+		LCD_write( /test/ );
+		delay_milli(100);
 		}
 		LCD_command (0xC0);  //move cursor to next line start
-		_delay_ms(100);
+		delay_milli(100);
 		LCD_command (0x0C);  //display on, cursor off
-		_delay_ms(100);
-	
+		delay_milli(100);
 		for (uint8_t i=0; i<5; i++)
 		{
-		LCD_write( '          ' );
-		_delay_ms(100);
+			// char test [a,b,c] ;
+		LCD_write( /test/ );
+		delay_milli(100);
 		}
-		
-		
 	}
 		
 	}
-
+  //writing_end
  
 void init_LCD(void)
 {
 	LCD_command (0x38); //Send 8-bit data
-	_delay_ms(1);
-	LCD_command (0x01);		//clear display screen
-	_delay_ms(1);
-	LCD_command (0x02); //return home
-	_delay_ms(1);
-	LCD_command (0x30);  //Wakeup
-	_delay_ms(1);	
+	delay_milli(1);
 	LCD_command (0x06); //increment cursor
-
-	LCD_command (0x80); // go to most left posision on 1st line
-	_delay_ms(1)	;
+	delay_milli(1);
 	LCD_command (0x0F); //Display on
-
+	delay_milli(1);
+	LCD_command (0x01);		//clear display screen
+	delay_milli(1);
+	
 }
+
 
 //send command on LCD 
-void LCD_command(unsigned char cmd)
+void LCD_command(unsigned char command)
 {
-	LCD_DATA= command;
-	PORTF &=~ (1<<rs);  //rs sets 0
-	PORTA &=~ (1<<rw);  //rw sets 0
-	PORTA |= (1<<en);   // set enable high
-	_delay_ms (2)
-	
-	PORTA &= ~(1<<en);  //enable from high to low
+GPIO_PORTC_DATA_R &= ~0x70; //RS =0, E=0, RW=0
 
+GPIO_PORTA_DATA_R &=  ~0xC0;	
+GPIO_PORTA_DATA_R |=(command<<0);  
+GPIO_PORTD_DATA_R &=  ~0xC0;	
+GPIO_PORTD_DATA_R |=(command<<2);       
+GPIO_PORTE_DATA_R &=  ~0x03;	
+GPIO_PORTE_DATA_R |=(command>>2);       
+GPIO_PORTF_DATA_R &=  ~0x0C;	
+GPIO_PORTF_DATA_R |=(command<<2);       
+
+	
+	
+	GPIO_PORTC_DATA_R |=0x20; //E=1 to secure command
+delay_micro(0);
+GPIO_PORTC_DATA_R &=0x70;
+
+if(command <4) delay_milli(2); else delay_micro(37); } void LCD_Data(unsigned char data) { GPIO_PORTA_DATA_R |=0x2|40; //RS=1, E=0,RW=0
+
+	
+GPIO_PORTA_DATA_R =data;	
+GPIO_PORTD_DATA_R =data;	
+GPIO_PORTE_DATA_R =data;	
+GPIO_PORTF_DATA_R =data;
+
+GPIO_PORTC_DATA_R |= 0x20;
+GPIO_PORTC_DATA_R &=~0x07;
+delay_micro(0);
+ 
 }
 
-
-//write data on LCD
-void LCD_write (unsigned char data)
-{
-LCD_DATA= data;
-	PORTF |= (1<<rs);  //rs sets 1
-	PORTA &=~ (1<<rw);  //rw sets 0
-	PORTA |= (1<<en);   // set enable high
-	_delay_ms (2)
-	
-	PORTA &= ~(1<<en);  //enable from high to low
-
+//delay_milli
+void delay_milli(int n){
+int i,j;
+for(i=0;i<n;i++)
+for(j=0;j<3180;j++)
+{}
 }
-
+ 
+//delay_micro
+void delay_micro(int n){
+int i,j;
+for(i=0;i<n;i++)
+for(j=0;j<3;j++)
+{}
+}
 
 
 
