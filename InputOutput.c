@@ -1,12 +1,12 @@
-#include "C:/Keil/ARM/BIN/tm4c123gh6pm.h"
+#include "tm4c123gh6pm.h"
 #include "stdint.h"
 
 void SystemInit(){}
 
-#define INT_GPIOA        // GPIO Port A
-#define INT_GPIOB        // GPIO Port B
-#define INT_GPIOE        // GPIO Port E
-#define INT_GPIOF        // GPIO Port F
+//#define INT_GPIOA        // GPIO Port A
+//#define INT_GPIOB        // GPIO Port B
+//#define INT_GPIOE        // GPIO Port E
+//#define INT_GPIOF        // GPIO Port F
 	
 #define SYSCTL_RCGCGPIO_R       (*((volatile unsigned long *)0x400FE608))
 #define SYSCTL_PRGPIO_R         (*((volatile unsigned long *)0x400FEA08))

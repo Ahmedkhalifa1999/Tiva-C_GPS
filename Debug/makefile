@@ -10,8 +10,10 @@ GEN_OPTS__FLAG :=
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
+"./Delay.obj" \
 "./Display.obj" \
 "./Distance.obj" \
+"./GPS_Read.obj" \
 "./InputOutput.obj" \
 "./LED_On.obj" \
 "./main.obj" \
@@ -159,8 +161,8 @@ Tiva-C_GPS.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "Display.obj" "Distance.obj" "InputOutput.obj" "LED_On.obj" "main.obj" "tm4c123gh6pm_startup_ccs.obj" 
-	-$(RM) "Display.d" "Distance.d" "InputOutput.d" "LED_On.d" "main.d" "tm4c123gh6pm_startup_ccs.d" 
+	-$(RM) "Delay.obj" "Display.obj" "Distance.obj" "GPS_Read.obj" "InputOutput.obj" "LED_On.obj" "main.obj" "tm4c123gh6pm_startup_ccs.obj" 
+	-$(RM) "Delay.d" "Display.d" "Distance.d" "GPS_Read.d" "InputOutput.d" "LED_On.d" "main.d" "tm4c123gh6pm_startup_ccs.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
