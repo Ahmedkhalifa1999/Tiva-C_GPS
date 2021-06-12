@@ -1,0 +1,8 @@
+char lng[10] = {'0','0','8','3','1','5','4','7','6','1'};
+char lat[9]= { '4','1','3','1','5','4','7','6','1' };
+float lat2[9];
+float lng2[10];
+//int lng2;
+float longitude;
+float d=100;
+float latitude;
