@@ -1,12 +1,12 @@
-#include "tm4c123gh6pm.h"
+#include "C:/Keil/ARM/BIN/tm4c123gh6pm.h"
 #include "stdint.h"
 
 void SystemInit(){}
 
-//#define INT_GPIOA        // GPIO Port A
-//#define INT_GPIOB        // GPIO Port B
-//#define INT_GPIOE        // GPIO Port E
-//#define INT_GPIOF        // GPIO Port F
+#define INT_GPIOA        // GPIO Port A
+#define INT_GPIOB        // GPIO Port B
+#define INT_GPIOE        // GPIO Port E
+#define INT_GPIOF        // GPIO Port F
 	
 #define SYSCTL_RCGCGPIO_R       (*((volatile unsigned long *)0x400FE608))
 #define SYSCTL_PRGPIO_R         (*((volatile unsigned long *)0x400FEA08))
@@ -60,7 +60,7 @@ GPIO_PORTA_AFSEL_R &=~0xFC;
 GPIO_PORTA_PCTL_R &= ~0xFFFFFF00;
 GPIO_PORTA_DATA_R &= ~0xFC;
 	
-GPIO_PORTB_DIR_R |= 0XF0;
+GPIO_PORTB_DIR_R |= 0XFC;
 	
 UART1_CTL_R &= ~0x00000001;
 UART1_IBRD_R = 104;	
@@ -68,27 +68,19 @@ UART1_FBRD_R = 11;
 UART1_LCRH_R = 0x00000070;
 UART1_CTL_R |= 0x00000301;	
 
-GPIO_PORTB_DEN_R |= 0xF3;
-GPIO_PORTB_AMSEL_R &= ~0xF3;
+GPIO_PORTB_DEN_R |= 0xFF;
+GPIO_PORTB_AMSEL_R &= ~0xFF;
 	
 GPIO_PORTB_AFSEL_R |= 0x03;
 GPIO_PORTB_PCTL_R = (GPIO_PORTB_PCTL_R & 0xFFFFFF00)+ 0x00000011;
-GPIO_PORTB_DATA_R &= ~0xF0;
+GPIO_PORTB_DATA_R &= ~0xFC;
 	
-	
-GPIO_PORTC_DIR_R |= 0XF0;
-GPIO_PORTC_DEN_R |= 0xF0;
-GPIO_PORTC_AMSEL_R &= ~0xF0;
-GPIO_PORTC_AFSEL_R &=~0xF0;
-GPIO_PORTC_PCTL_R &= ~0x0000FFFF;
-GPIO_PORTC_DATA_R &= ~0xF0;
-
-GPIO_PORTD_DIR_R |= 0XC0;
-GPIO_PORTD_DEN_R |= 0xC0;
-GPIO_PORTD_AMSEL_R &= ~0xC0;
-GPIO_PORTD_AFSEL_R &=~0xC0;
-GPIO_PORTD_PCTL_R &= ~0xFF000000;
-GPIO_PORTD_DATA_R &= ~0xC0;
+GPIO_PORTD_DIR_R |= 0XCC;
+GPIO_PORTD_DEN_R |= 0xCC;
+GPIO_PORTD_AMSEL_R &= ~0xCC;
+GPIO_PORTD_AFSEL_R &=~0xCC;
+GPIO_PORTD_PCTL_R &= ~0xFF00FF00;
+GPIO_PORTD_DATA_R &= ~0xCC;
 		
 GPIO_PORTE_DIR_R |= 0X3F;
 GPIO_PORTE_DEN_R |= 0x3F;
