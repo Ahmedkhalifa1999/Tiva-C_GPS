@@ -22,6 +22,9 @@ int ReadGPS(double pos[], int time[]) {
     if(message[2] != 'G') goto read_again;
     if(message[3] != 'G') goto read_again;
     if(message[4] != 'A') goto read_again;
+    for (i = 5; i < 44; i++) {
+        message[i] = ReadUART();
+    }
     for (i = 0; i < 6; i++) {
         time_char[i] = message[i+6];
     }
