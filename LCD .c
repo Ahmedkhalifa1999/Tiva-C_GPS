@@ -68,7 +68,8 @@ void init_LCD(void)
 //send command on LCD 
 void LCD_command(unsigned char command)
 {
-GPIO_PORTC_DATA_R &= ~0x70; //RS =0, E=0, RW=0
+GPIO_PORTB_DATA_R &= ~0x0C; //RS(B2) =0, RW(B3)=0
+GPIO_PORTD_DATA_R &= ~0x04; //E =0 (D2)
 
 GPIO_PORTA_DATA_R &=  ~0xC0;	
 GPIO_PORTA_DATA_R |=(command<<0);  
@@ -81,20 +82,26 @@ GPIO_PORTF_DATA_R |=(command<<2);
 
 	
 	
-	GPIO_PORTC_DATA_R |=0x20; //E=1 to secure command
+	GPIO_PORTD_DATA_R |=0x04; //E=1 to secure command
 delay_micro(0);
-GPIO_PORTC_DATA_R &=0x70;
-
-if(command <4) delay_milli(2); else delay_micro(37); } void LCD_Data(unsigned char data) { GPIO_PORTA_DATA_R |=0x2|40; //RS=1, E=0,RW=0
+GPIO_PORTB_DATA_R &= ~0x0C; //RS(B2) =0, RW(B3)=0
+GPIO_PORTD_DATA_R &= ~0x04; //E =0 (D2)
+	
+if(command <4) delay_milli(2); else delay_micro(37); } void LCD_Data(unsigned char data) { GPIO_PORTB_DATA_R |=0x04; //RS=1, E=0,RW=0
 
 	
-GPIO_PORTA_DATA_R =data;	
-GPIO_PORTD_DATA_R =data;	
-GPIO_PORTE_DATA_R =data;	
-GPIO_PORTF_DATA_R =data;
+GPIO_PORTA_DATA_R &=  ~0xC0;	
+GPIO_PORTA_DATA_R |=(data<<0);  
+GPIO_PORTD_DATA_R &=  ~0xC0;	
+GPIO_PORTD_DATA_R |=(data<<2);       
+GPIO_PORTE_DATA_R &=  ~0x03;	
+GPIO_PORTE_DATA_R |=(data>>2);       
+GPIO_PORTF_DATA_R &=  ~0x0C;	
+GPIO_PORTF_DATA_R |=(data<<2);
 
-GPIO_PORTC_DATA_R |= 0x20;
-GPIO_PORTC_DATA_R &=~0x07;
+GPIO_PORTD_DATA_R |=0x04;
+GPIO_PORTB_DATA_R &= ~0x0C; //RS(B2) =0, RW(B3)=0
+GPIO_PORTD_DATA_R &= ~0x04; //E =0
 delay_micro(0);
  
 }
@@ -115,8 +122,3 @@ for(j=0;j<3;j++)
 {}
 }
 
-
-
-
-
-  
