@@ -15,6 +15,9 @@ int ReadGPS(double pos[], int time[]) {
     char time_char[6];
     char latitude[9];
     char longitude[10];
+    float d;
+	float lati;
+	float longi;
     int i;
     for (i = 0; i < 5; i++){
         message[i] = ReadUART();
@@ -40,6 +43,42 @@ int ReadGPS(double pos[], int time[]) {
     for (i = 5; i < 10; i++) {
         longitude[i] = message[i+31];
     }
+    
+
+	d=100;
+	
+	
+	for ( i = 0; i<10; i++)
+	{
+	lng2[i] = (longitude[i] -'0') ;
+
+		if (i >= 3) {
+			lng2[i] = (lng2[i]*100) / (60);
+
+
+		}
+
+		longi += lng2[i] * d;
+
+		d /= 10;
+
+	}
+	
+	
+	d = 10;
+	for ( i = 0; i < 9; i++)
+	{
+		lat2[i] = (latitude[i] - '0');
+
+		if (i >= 2) {
+			lat2[i] = (lat2[i] * 100) / (60);
+		}
+		lati += lat2[i] * d;
+
+		d /= 10;
+
+	}
+
 }
 
 
