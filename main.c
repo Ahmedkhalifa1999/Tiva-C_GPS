@@ -27,6 +27,4 @@ int main() {
         past_pos[1] = current_pos[1];
         LEDControl(totalDistance);
     }
-    init();
-
 }
