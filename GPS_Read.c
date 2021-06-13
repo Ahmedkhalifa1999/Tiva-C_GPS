@@ -1,14 +1,13 @@
 #include "tm4c123gh6pm.h"
 
-
 char ReadUART() {
-    while(!(UART1_FR_R && 0x010)) {
-        return (UART1_DR_R & 0x00FF);
-    }
-    return 0;
+    char Read;
+    while((UART1_FR_R & 0x010));
+    Read = UART1_DR_R & 0x00FF;
+    return Read;
 }
 
-int ReadGPS(float pos[], int time[]) {
+int ReadGPS(double pos[], int time[]) {
     pos[0] = 0;
     pos[1] = 0;
     time[0] = 0;
@@ -21,7 +20,7 @@ int ReadGPS(float pos[], int time[]) {
     char Read;
     int i;
     read_again:
-    while (ReadUART() != 36);
+    while (ReadUART() != '$');
     for (i = 0; i < 5; i++){
         messageType[i] = ReadUART();
     }
@@ -62,11 +61,12 @@ int ReadGPS(float pos[], int time[]) {
         Read = ReadUART();
     }
     while(ReadUART() != ',');
-
-    if (ReadUART() == '0') return 0;
+    if (ReadUART() == '0') {
+        return 0;
+    }
     
 
-    float d;
+    double d;
     int lng2[10];
     int lat2[9];
 
