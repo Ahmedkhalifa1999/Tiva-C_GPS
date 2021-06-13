@@ -40,15 +40,11 @@ void init_LCD() {
 void LCD_Data(char data) {
     GPIO_PORTB_DATA_R |=0x04; //RS=1, E=0,RW=0
 
-    GPIO_PORTA_DATA_R &=  ~0xC0;
-    GPIO_PORTA_DATA_R |=(data<<0);
-    GPIO_PORTD_DATA_R &=  ~0xC0;
-    GPIO_PORTD_DATA_R |=(data<<2);
-    GPIO_PORTE_DATA_R &=  ~0x03;
-    GPIO_PORTE_DATA_R |=(data>>2);
-    GPIO_PORTF_DATA_R &=  ~0x0C;
-    GPIO_PORTF_DATA_R |=(data<<2);
-
+    GPIO_PORTA_DATA_R = (GPIO_PORTA_DATA_R & 0xC0) | (0xC0&(data << 0));
+    GPIO_PORTD_DATA_R = (GPIO_PORTA_DATA_R & 0xC0) | (0x30&(data << 2));
+    GPIO_PORTE_DATA_R = (GPIO_PORTA_DATA_R & 0x03) | (0x0C&(data >> 2));
+    GPIO_PORTF_DATA_R = (GPIO_PORTA_DATA_R & 0x0C) | (0x03&(data << 2));
+   
     GPIO_PORTD_DATA_R |=0x04;
     GPIO_PORTB_DATA_R &= ~0x0C; //RS(B2) =0, RW(B3)=0
     GPIO_PORTD_DATA_R &= ~0x04; //E =0
