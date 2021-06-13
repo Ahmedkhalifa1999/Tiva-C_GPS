@@ -1,17 +1,5 @@
 #include <stdio.h>
-int time(int start[], int end[]);
 
-int main() 
-{
-	
-	int a[] = { 2,8,2 };
-	int b[] = { 1,18,1 };
-    int x= time( a, b);
-	printf("%d", x);
-
-	return 0;
-
-}
 int time(int start[], int end[]) {
 	int c[3];
 	int i;

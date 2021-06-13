@@ -1,7 +1,7 @@
 #define F_CPU 16000000UL
 
 #include "stdint.h"
-#include "C:/Keil/TExaSware/tm4c123gh6pm.h"
+#include "tm4c123gh6pm.h"
 
 
 

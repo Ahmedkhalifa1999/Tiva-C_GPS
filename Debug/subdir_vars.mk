@@ -14,7 +14,8 @@ C_SRCS += \
 ../Distance.c \
 ../GPS_Read.c \
 ../InputOutput.c \
-../LED_On.c \
+../LCD.c \
+../LED.c \
 ../main.c \
 ../tm4c123gh6pm_startup_ccs.c 
 
@@ -24,7 +25,8 @@ C_DEPS += \
 ./Distance.d \
 ./GPS_Read.d \
 ./InputOutput.d \
-./LED_On.d \
+./LCD.d \
+./LED.d \
 ./main.d \
 ./tm4c123gh6pm_startup_ccs.d 
 
@@ -34,7 +36,8 @@ OBJS += \
 ./Distance.obj \
 ./GPS_Read.obj \
 ./InputOutput.obj \
-./LED_On.obj \
+./LCD.obj \
+./LED.obj \
 ./main.obj \
 ./tm4c123gh6pm_startup_ccs.obj 
 
@@ -44,7 +47,8 @@ OBJS__QUOTED += \
 "Distance.obj" \
 "GPS_Read.obj" \
 "InputOutput.obj" \
-"LED_On.obj" \
+"LCD.obj" \
+"LED.obj" \
 "main.obj" \
 "tm4c123gh6pm_startup_ccs.obj" 
 
@@ -54,7 +58,8 @@ C_DEPS__QUOTED += \
 "Distance.d" \
 "GPS_Read.d" \
 "InputOutput.d" \
-"LED_On.d" \
+"LCD.d" \
+"LED.d" \
 "main.d" \
 "tm4c123gh6pm_startup_ccs.d" 
 
@@ -64,7 +69,8 @@ C_SRCS__QUOTED += \
 "../Distance.c" \
 "../GPS_Read.c" \
 "../InputOutput.c" \
-"../LED_On.c" \
+"../LCD.c" \
+"../LED.c" \
 "../main.c" \
 "../tm4c123gh6pm_startup_ccs.c" 
 

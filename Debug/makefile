@@ -15,7 +15,8 @@ ORDERED_OBJS += \
 "./Distance.obj" \
 "./GPS_Read.obj" \
 "./InputOutput.obj" \
-"./LED_On.obj" \
+"./LCD.obj" \
+"./LED.obj" \
 "./main.obj" \
 "./tm4c123gh6pm_startup_ccs.obj" \
 "../tm4c123gh6pm.cmd" \
@@ -161,8 +162,8 @@ Tiva-C_GPS.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "Delay.obj" "Display.obj" "Distance.obj" "GPS_Read.obj" "InputOutput.obj" "LED_On.obj" "main.obj" "tm4c123gh6pm_startup_ccs.obj" 
-	-$(RM) "Delay.d" "Display.d" "Distance.d" "GPS_Read.d" "InputOutput.d" "LED_On.d" "main.d" "tm4c123gh6pm_startup_ccs.d" 
+	-$(RM) "Delay.obj" "Display.obj" "Distance.obj" "GPS_Read.obj" "InputOutput.obj" "LCD.obj" "LED.obj" "main.obj" "tm4c123gh6pm_startup_ccs.obj" 
+	-$(RM) "Delay.d" "Display.d" "Distance.d" "GPS_Read.d" "InputOutput.d" "LCD.d" "LED.d" "main.d" "tm4c123gh6pm_startup_ccs.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

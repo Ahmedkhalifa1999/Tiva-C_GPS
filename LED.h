@@ -1,0 +1,1 @@
+void LEDControl(int distance);

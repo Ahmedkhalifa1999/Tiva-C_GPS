@@ -1,6 +1,7 @@
 # FIXED
 
 main.obj: ../main.c
+main.obj: C:/Users/ahmed/Desktop/Introduction\ to\ Embedded\ Systems/Project/Tiva-C_GPS/LED.h
 main.obj: C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/include/stdint.h
 main.obj: C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/include/_ti_config.h
 main.obj: C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/include/linkage.h
@@ -13,11 +14,12 @@ main.obj: C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/include/machine
 main.obj: C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/include/sys/_stdint.h
 main.obj: ../tm4c123gh6pm.h
 main.obj: ../InputOutput.h
-main.obj: ../LED_On.h
 main.obj: ../Display.h
 main.obj: ../Distance.h
 
 ../main.c:
+
+C:/Users/ahmed/Desktop/Introduction\ to\ Embedded\ Systems/Project/Tiva-C_GPS/LED.h:
 
 C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/include/stdint.h:
 
@@ -42,8 +44,6 @@ C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/include/sys/_stdint.h:
 ../tm4c123gh6pm.h:
 
 ../InputOutput.h:
-
-../LED_On.h:
 
 ../Display.h:
 

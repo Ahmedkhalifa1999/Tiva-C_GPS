@@ -1,1 +1,1 @@
-void ReadGPS(double pos[], int time[]);
+int ReadGPS(float pos[], int time[]);

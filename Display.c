@@ -1,15 +1,6 @@
 #include "stdint.h"
 #include "tm4c123gh6pm.h"
 
-//int digits[3];
-
-
-//void numbreak(int c) {
-//	digits[2]= c / 100;
-//	digits[1] = (c - digits[2]*100) / 10;
-//	digits[0] = (c - digits[2]*100 - digits[1]*10);
-//	
-//}
 void sevseg(int a) {
 	int digits[3];
 	digits[2]= a / 100;
