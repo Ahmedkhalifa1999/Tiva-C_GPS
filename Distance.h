@@ -1,1 +1,1 @@
-double distance(double lat1, double lat2, double lon1, double lon2);
+double distance(float lon1, float lon2, float lat1, float lat2);

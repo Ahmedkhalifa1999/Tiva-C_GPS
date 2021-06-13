@@ -3,11 +3,11 @@
 #define R 6371
 #define PI 3.14
 
-double distance(double lat1, double lat2, double lon1, double lon2)
+float distance(float lon1, float lon2, float lat1, float lat2)
 {
-	double distance;
-	double a = sin((lat2 - lat1) * PI / 360) * sin((lat2 - lat1) * PI / 360);
-	double b = sin((lon2 - lon1) * PI / 360) * sin((lon2 - lon1) * PI / 360);
+	float distance;
+	float a = sin((lat2 - lat1) * PI / 360) * sin((lat2 - lat1) * PI / 360);
+	float b = sin((lon2 - lon1) * PI / 360) * sin((lon2 - lon1) * PI / 360);
 	distance = 2000 * R * asin(sqrt(a + cos(lat2 * PI / 180) * cos(lat1 * PI / 180) * b));
 	return distance;
 }

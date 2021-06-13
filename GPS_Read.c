@@ -9,6 +9,11 @@ char ReadUART() {
 }
 
 int ReadGPS(float pos[], int time[]) {
+    pos[0] = 0;
+    pos[1] = 0;
+    time[0] = 0;
+    time[1] = 0;
+    time[2] = 0;
     char messageType[5];
     char time_char[9];
     char latitude[6];
