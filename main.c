@@ -11,5 +11,13 @@
 void SystemInit() {}
 
 int main() {
+    //float postion[2]={10, 16};
+    //float time[3]={1, 22, 33};
+    //int ReadGPS(float pos[], int time[]);
+   // int ReadGPS( , );
 
+   // void LCD_write( "abc d 123" );
+   init();
+   init_LCD();
+   LCD_write( "abc d 123", 9);
 }

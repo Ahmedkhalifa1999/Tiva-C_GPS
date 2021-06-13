@@ -61,7 +61,7 @@ int ReadGPS(float pos[], int time[]) {
     if (ReadUART() == '0') return 0;
     
 
-    int d;
+    float d;
     int lng2[10];
     int lat2[9];
 

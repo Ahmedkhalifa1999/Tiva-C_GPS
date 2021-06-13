@@ -1,17 +1,17 @@
 ******************************************************************************
                   TI ARM Linker PC v20.2.4                     
 ******************************************************************************
->> Linked Sun Jun 13 15:20:36 2021
+>> Linked Sun Jun 13 17:04:01 2021
 
 OUTPUT FILE NAME:   <Tiva-C_GPS.out>
-ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 00000725
+ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 000006e9
 
 
 MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  FLASH                 00000000   00040000  0000077a  0003f886  R  X
+  FLASH                 00000000   00040000  0000074a  0003f8b6  R  X
   SRAM                  20000000   00008000  00000200  00007e00  RW X
 
 
@@ -19,9 +19,9 @@ SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    0000077a   0000077a    r-x
+00000000    00000000    0000074a   0000074a    r-x
   00000000    00000000    0000026c   0000026c    r-- .intvecs
-  0000026c    0000026c    0000050e   0000050e    r-x .text
+  0000026c    0000026c    000004de   000004de    r-x .text
 20000000    20000000    00000200   00000000    rw-
   20000000    20000000    00000200   00000000    rw- .stack
 
@@ -34,14 +34,15 @@ section   page    origin      length       input sections
 .intvecs   0    00000000    0000026c     
                   00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
 
-.text      0    0000026c    0000050e     
-                  0000026c    0000029c     GPS_Read.obj (.text)
-                  00000508    0000021c     InputOutput.obj (.text)
-                  00000724    0000002c     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.text:_c_int00_noinit_noargs:_c_int00_noinit_noargs)
-                  00000750    00000016     main.obj (.text)
-                  00000766    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
-                  00000772    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
-                  00000776    00000004                                   : exit.c.obj (.text:abort:abort)
+.text      0    0000026c    000004de     
+                  0000026c    0000021c     InputOutput.obj (.text)
+                  00000488    000001e4     LCD.obj (.text)
+                  0000066c    0000007c     Delay.obj (.text)
+                  000006e8    0000002c     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.text:_c_int00_noinit_noargs:_c_int00_noinit_noargs)
+                  00000714    00000022     main.obj (.text)
+                  00000736    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  00000742    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  00000746    00000004                                   : exit.c.obj (.text:abort:abort)
 
 .cinit     0    00000000    00000000     UNINITIALIZED
 
@@ -60,12 +61,13 @@ MODULE SUMMARY
        Module                         code   ro data   rw data
        ------                         ----   -------   -------
     .\
-       GPS_Read.obj                   668    0         0      
        tm4c123gh6pm_startup_ccs.obj   12     620       0      
        InputOutput.obj                540    0         0      
-       main.obj                       22     0         0      
+       LCD.obj                        484    0         0      
+       Delay.obj                      124    0         0      
+       main.obj                       34     0         0      
     +--+------------------------------+------+---------+---------+
-       Total:                         1242   620       0      
+       Total:                         1194   620       0      
                                                               
     C:\ti\ccs1031\ccs\tools\compiler\ti-cgt-arm_20.2.4.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
        boot_cortex_m.c.obj            44     0         0      
@@ -76,18 +78,19 @@ MODULE SUMMARY
                                                               
        Stack:                         0      0         512    
     +--+------------------------------+------+---------+---------+
-       Grand Total:                   1294   620       512    
+       Grand Total:                   1246   620       512    
 
 
 GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
 
 address   name                   
 -------   ----                   
-00000777  C$$EXIT                
-00000287  ReadGPS                
-0000026d  ReadUART               
-00000767  ResetISR               
-00000751  SystemInit             
+00000747  C$$EXIT                
+00000565  LCD_Data               
+00000489  LCD_command            
+000005f7  LCD_write              
+00000737  ResetISR               
+00000715  SystemInit             
 20000200  __STACK_END            
 00000200  __STACK_SIZE           
 20000200  __STACK_TOP            
@@ -101,13 +104,16 @@ UNDEFED   __mpu_init
 20000000  __stack                
 20000000  __start___llvm_prf_cnts
 20000000  __stop___llvm_prf_cnts 
-00000725  _c_int00_noinit_noargs 
-00000773  _system_pre_init       
-00000777  abort                  
+000006e9  _c_int00_noinit_noargs 
+00000743  _system_pre_init       
+00000747  abort                  
 ffffffff  binit                  
+000006af  delay_micro            
+0000066d  delay_milli            
 00000000  g_pfnVectors           
-00000509  init                   
-00000753  main                   
+0000026d  init                   
+00000531  init_LCD               
+00000717  main                   
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -117,16 +123,20 @@ address   name
 00000000  __TI_static_base__     
 00000000  g_pfnVectors           
 00000200  __STACK_SIZE           
-0000026d  ReadUART               
-00000287  ReadGPS                
-00000509  init                   
-00000725  _c_int00_noinit_noargs 
-00000751  SystemInit             
-00000753  main                   
-00000767  ResetISR               
-00000773  _system_pre_init       
-00000777  C$$EXIT                
-00000777  abort                  
+0000026d  init                   
+00000489  LCD_command            
+00000531  init_LCD               
+00000565  LCD_Data               
+000005f7  LCD_write              
+0000066d  delay_milli            
+000006af  delay_micro            
+000006e9  _c_int00_noinit_noargs 
+00000715  SystemInit             
+00000717  main                   
+00000737  ResetISR               
+00000743  _system_pre_init       
+00000747  C$$EXIT                
+00000747  abort                  
 20000000  __stack                
 20000000  __start___llvm_prf_cnts
 20000000  __stop___llvm_prf_cnts 
@@ -140,4 +150,4 @@ ffffffff  __c_args__
 ffffffff  binit                  
 UNDEFED   __mpu_init             
 
-[25 symbols]
+[29 symbols]
