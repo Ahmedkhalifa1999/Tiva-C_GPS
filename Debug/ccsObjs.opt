@@ -1,1 +1,1 @@
-"./Delay.obj" "./Display.obj" "./Distance.obj" "./GPS_Read.obj" "./InputOutput.obj" "./LCD.obj" "./LED.obj" "./main.obj" "./tm4c123gh6pm_startup_ccs.obj" "../tm4c123gh6pm.cmd" -llibc.a 
+"./Delay.obj" "./Display.obj" "./Distance.obj" "./GPS_Read.obj" "./InputOutput.obj" "./LCD.obj" "./LED.obj" "./Time.obj" "./main.obj" "./tm4c123gh6pm_startup_ccs.obj" "../tm4c123gh6pm.cmd" -llibc.a 

@@ -2,19 +2,17 @@
 
 #include "stdint.h"
 #include "tm4c123gh6pm.h"
-
+#include "Delay.h"
 
 
 
 void init_LCD();
 void LCD_command (unsigned char command);
 void LCD_write (unsigned char data);
-void delay_milli (int n);
-void delay_micro (int n);
 
 
 
-int main()
+/*int main()
 { 
 	init_LCD();
 	delay_milli(100);
@@ -50,7 +48,7 @@ int main()
 		
 	}
   //writing_end
- 
+ */
 void init_LCD(void)
 {
 	LCD_command (0x38); //Send 8-bit data
@@ -104,21 +102,5 @@ GPIO_PORTB_DATA_R &= ~0x0C; //RS(B2) =0, RW(B3)=0
 GPIO_PORTD_DATA_R &= ~0x04; //E =0
 delay_micro(0);
  
-}
-
-//delay_milli
-void delay_milli(int n){
-int i,j;
-for(i=0;i<n;i++)
-for(j=0;j<3180;j++)
-{}
-}
- 
-//delay_micro
-void delay_micro(int n){
-int i,j;
-for(i=0;i<n;i++)
-for(j=0;j<3;j++)
-{}
 }
 

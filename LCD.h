@@ -1,1 +1,1 @@
-void LCD_write(unsigned char data);
+void LCD_write(char data);

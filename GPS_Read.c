@@ -3,7 +3,7 @@
 
 char ReadUART() {
     while(!(UART1_FR_R && 0x010)) {
-        return UART1_DR_R;
+        return (UART1_DR_R & 0x00FF);
     }
     return 0;
 }
@@ -16,7 +16,7 @@ int ReadGPS(float pos[], int time[]) {
     char Read;
     int i;
     read_again:
-    while (ReadUART() != '$');
+    while (ReadUART() != 36);
     for (i = 0; i < 5; i++){
         messageType[i] = ReadUART();
     }
@@ -63,9 +63,7 @@ int ReadGPS(float pos[], int time[]) {
 
     int d;
     int lng2[10];
-    int longi;
     int lat2[9];
-    int lati;
 
 
     d=100;
@@ -75,7 +73,7 @@ int ReadGPS(float pos[], int time[]) {
 	    if (i >= 3) {
 	        lng2[i] = (lng2[i]*100) / (60);
 	    }
-	    longi += lng2[i] * d;
+	    pos[0] += lng2[i] * d;
 	    d /= 10;
 	}
 
@@ -85,11 +83,10 @@ int ReadGPS(float pos[], int time[]) {
 		if (i >= 2) {
 			lat2[i] = (lat2[i] * 100) / (60);
 		}
-		lati += lat2[i] * d;
+		pos[1] += lat2[i] * d;
 		d /= 10;
 	}
 
-	int time_int[3] = {0,0,0};
 	int k; 
 	int v;
 	for (i = 0; i < 6; i++){
@@ -99,7 +96,7 @@ int ReadGPS(float pos[], int time[]) {
 		if (i % 2 == 0) {
 			v *= 10;
 		}
-		time_int[k] += v;
+		time[k] += v;
 	}
 	return 1;
 }

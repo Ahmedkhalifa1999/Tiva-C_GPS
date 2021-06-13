@@ -16,6 +16,7 @@ C_SRCS += \
 ../InputOutput.c \
 ../LCD.c \
 ../LED.c \
+../Time.c \
 ../main.c \
 ../tm4c123gh6pm_startup_ccs.c 
 
@@ -27,6 +28,7 @@ C_DEPS += \
 ./InputOutput.d \
 ./LCD.d \
 ./LED.d \
+./Time.d \
 ./main.d \
 ./tm4c123gh6pm_startup_ccs.d 
 
@@ -38,6 +40,7 @@ OBJS += \
 ./InputOutput.obj \
 ./LCD.obj \
 ./LED.obj \
+./Time.obj \
 ./main.obj \
 ./tm4c123gh6pm_startup_ccs.obj 
 
@@ -49,6 +52,7 @@ OBJS__QUOTED += \
 "InputOutput.obj" \
 "LCD.obj" \
 "LED.obj" \
+"Time.obj" \
 "main.obj" \
 "tm4c123gh6pm_startup_ccs.obj" 
 
@@ -60,6 +64,7 @@ C_DEPS__QUOTED += \
 "InputOutput.d" \
 "LCD.d" \
 "LED.d" \
+"Time.d" \
 "main.d" \
 "tm4c123gh6pm_startup_ccs.d" 
 
@@ -71,6 +76,7 @@ C_SRCS__QUOTED += \
 "../InputOutput.c" \
 "../LCD.c" \
 "../LED.c" \
+"../Time.c" \
 "../main.c" \
 "../tm4c123gh6pm_startup_ccs.c" 
 

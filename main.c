@@ -11,15 +11,5 @@
 void SystemInit() {}
 
 int main() {
-	int totalDistance = 0;
-	int i;
-	//double previousLat, previousLon, currentLat, currentLon;
-	init();
-	while(1) {
-	    LED_control(totalDistance);
-	    sevseg(totalDistance);
-	    totalDistance++;
-	    i = 0;
-	    while (i < 250000) i++;
-	}
+
 }

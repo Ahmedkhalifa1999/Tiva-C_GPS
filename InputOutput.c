@@ -1,8 +1,6 @@
 #include "tm4c123gh6pm.h"
 #include "stdint.h"
 
-void SystemInit(){}
-
 void init(void) {
     SYSCTL_RCGCGPIO_R|= 0x3F;
     SYSCTL_RCGCUART_R|= 0x02;
