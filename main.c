@@ -17,13 +17,18 @@ int main() {
     int end_time[3];
     double totalDistance = 0;
     init();
+    while((GPIO_PORTF_DATA_R & 0x10) != 0);
+    delay_milli(200);
     while(ReadGPS(past_pos, start_time) == 0);
-    while(1) {
+    while((GPIO_PORTF_DATA_R & 0x10) != 0) {
         ReadGPS(current_pos, end_time);
         totalDistance += distance(past_pos[0], current_pos[0], past_pos[1], current_pos[1]);
         sevseg(totalDistance);
         past_pos[0] = current_pos[0];
         past_pos[1] = current_pos[1];
         LEDControl((int)totalDistance);
+    }  
+    while(1){
+    sevseg(totalDistance);
     }
 }
